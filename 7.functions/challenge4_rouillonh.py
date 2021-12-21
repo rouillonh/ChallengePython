@@ -1,12 +1,12 @@
 
 def draw_board(lista):
-    print("------------------")
+    print("-----------------------")
     print("|| " ,lista[0]," || ",lista[1]," || ",lista[2]," ||")
     print("------------------")
     print("|| " ,lista[3]," || ",lista[4]," || ",lista[5]," ||")
     print("------------------")
     print("|| " ,lista[6]," || ",lista[7]," || ",lista[8]," ||")
-    print("------------------")
+    print("-----------------------")
 def get_player_input(a,lista):
     ban = True 
     while ban:
