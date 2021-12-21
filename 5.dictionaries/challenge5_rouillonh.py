@@ -1,6 +1,9 @@
+#Importamos la libreria counter
 from collections import Counter
 print("\tWelcome to the Frequency Analysis App")
+#Creamos la lista con los valores que no son cadenas o caracteres
 non_letters = ["1","2","3","4","5","6","7","8","9","0",":"," ",",",".","?","\n","\t","!",'"','$','-','@',';',"'"]
+#Las frases a analizar
 key_phrase_1 = """
 To Sherlock Holmes she is always the woman. I have seldom heard him mention her under any
 other name.
@@ -68,47 +71,59 @@ companion's processes.
 Such paper could not be bought under half a crown a packet.
 It is peculiarly strong and stiff.
 """.lower()
+#Imprimimos las frecuencias de la frase 1 y 2
 print("\nHere is the frequency analysis from key phrase 1")
 new_phrase1 = ''.join( i for i in key_phrase_1 if i not in non_letters) 
 total_ocurrences = len(new_phrase1)
 letter_count = Counter(new_phrase1)
-lista = []
+l = []
 print("\n\tLetter\t\tOcurrence\t\tPercentage")
 for clave,valor in sorted(letter_count.items()):
     print("\t",clave,"\t\t",valor,"\t\t",round(valor/total_ocurrences *100,2))
 order_letter_count = letter_count.most_common()
 for i in range(len(order_letter_count)):
     for j in range(0,1):
-        lista.append(order_letter_count[i][j])
-lista = "".join(lista)
+        l.append(order_letter_count[i][j])
+lista = "".join(l)
 print("\nLetters ordered from highest occurrence to lowest:")
 print(lista) 
 print("\nHere is the frequency analysis from key phrase 2")
 new_phrase2 = ''.join( i for i in key_phrase_2 if i not in non_letters) 
 total_ocurrences2 = len(new_phrase2)
 letter_count2 = Counter(new_phrase2)
-lista2 = []
+l2 = []
 print("\n\tLetter\t\tOcurrence\t\tPercentage")
 for clave,valor in sorted(letter_count2.items()):
     print("\t",clave,"\t\t",valor,"\t\t",round(valor/total_ocurrences *100,2))
 order_letter_count2 = letter_count2.most_common()
 for i in range(len(order_letter_count2)):
     for j in range(0,1):
-        lista2.append(order_letter_count2[i][j])
-lista2 = "".join(lista2)
+        l2.append(order_letter_count2[i][j])
+lista2 = "".join(l2)
 print("\nLetters ordered from highest occurrence to lowest:")
 print(lista2)
-choice = input("\nWould you like to encode or decode a message:")
+choice = input("\nWould you like to encode or decode a message:").lower()
+#Preguntamos si el usuario quiere decodificar o encodificar un mensaje
 if choice == "encode":
     phrase = input("What is the phrase: ").lower()
     new_phrase3= ''.join( i for i in phrase if i not in non_letters) 
-    total_ocurrences = len(new_phrase3)
-    letter_count3 = Counter(new_phrase3)
     encoded_phrase = []
-    order_letter_count3 = letter_count3.most_common()
-    for i in range(len(order_letter_count3)):
-        for j in range(0,1):
-            encoded_phrase.append(order_letter_count3[i][j])
+    for i in new_phrase3:
+        indx = l.index(i)
+        letter = l2[indx]
+        encoded_phrase.append(letter)
     lista3 = "".join(encoded_phrase)
-    print("\nThe encoded message is: ",encoded_phrase)
-    
+    print("\nThe encoded message is: ",lista3)
+elif choice == "decode":
+    phrase = input("What is the phrase: ").lower()
+    new_phrase3= ''.join( i for i in phrase if i not in non_letters)
+    decoded_phrase = []
+    for i in phrase:
+        index = l2.index(i)
+        letter = l[index]
+        decoded_phrase.append(letter)
+    lista3 = "".join(decoded_phrase)
+    print("\nThe decoded message is: ",lista3)
+else :
+    print("El término ingresado es inválido") 
+#Termina el programa y el usuario se va con su mensaje, feliz c:
