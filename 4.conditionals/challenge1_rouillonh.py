@@ -1,6 +1,9 @@
+#Creamos una lista con los username
 lista = ['favio','juancho','jaime','camilo']
 print("\tWelcome to the Shipping Accounts Program")
+#Pedimos el username y corroboramos si esta en la lista anterior
 name = input("\nHello, what is your username: ").lower()
+#Si está, entonces procedemos con la compra
 if name in lista:
     print("\nHello ",name,". Welcome back to your account.")
     print("Current shipping prices are as follows:")
@@ -24,6 +27,7 @@ if name in lista:
         print("Okay. Shipping your ", order ,"items.") 
     elif x.startswith('n'):
         print("Okay, no order is being placed at this time.")
+#Si no está, no se procede
 else:
     print("Sorry, you do not have an account with us. Goodbye.")
 
